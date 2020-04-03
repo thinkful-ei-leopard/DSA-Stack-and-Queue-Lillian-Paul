@@ -39,6 +39,8 @@ class Queue {
   }
 }
 
+module.exports = Queue;
+
 function createStarTrekQueue() {
   const starTrekQ = new Queue();
   starTrekQ.enqueue('Kirk');
