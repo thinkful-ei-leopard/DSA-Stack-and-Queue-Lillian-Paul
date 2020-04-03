@@ -142,4 +142,47 @@ function matchingParens(exp) {
   }
 }
 
-console.log(matchingParens('testing a match ( ))'));
+//console.log(matchingParens('testing a match ( ))'));
+
+
+//5 Sort Stack
+
+function sort(stack) {
+  const temp = new Stack;
+
+  while(stack.top !== null){
+    if(temp.top === null){
+      temp.push(stack.pop());
+    }
+    let popped = stack.pop();
+    if(popped < temp.top.data){
+      while(temp.top !== null && popped < temp.top.data){
+        let tempPop = temp.pop();
+        stack.push(tempPop);
+      }
+      stack.push(popped);
+    } else {
+      temp.push(popped);
+    }
+  }
+
+  while(temp.top !== null){
+    stack.push(temp.pop());
+  }
+
+  return stack;
+}
+
+const sortStack = new Stack;
+function populateSortStack(stack){
+  stack.push(5);
+  stack.push(3);
+  stack.push(6);
+  stack.push(2);
+  stack.push(10);
+  stack.push(8);
+  stack.push(1);
+}
+populateSortStack(sortStack);
+
+console.log(sort(sortStack));
