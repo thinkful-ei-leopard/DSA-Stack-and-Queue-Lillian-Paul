@@ -30,14 +30,48 @@ class Stack {
 
 module.exports = Stack;
 
-const starTrek = new Stack;
+const starTrek = new Stack();
 
-function populateStar(list) {
-  list.push('Kirk');
-  list.push('Spock');
-  list.push('McCoy');
-  list.push('Scotty');
+function populateStar(stack) {
+  stack.push('Kirk');
+  stack.push('Spock');
+  stack.push('McCoy');
+  stack.push('Scotty');
 }
 
 populateStar(starTrek);
-console.log(starTrek);
+// console.log(starTrek);
+
+// 2. methods for a stack
+
+function peek(stack) {
+  return stack.top.data;
+}
+
+// console.log(peek(starTrek))
+
+function isEmpty(stack) {
+  if (stack.top === null) {
+    return 'stack is empty';
+  } else {
+    return 'stack is not empty';
+  }
+}
+
+// console.log(isEmpty(starTrek))
+
+function display(stack) {
+  let currentNode = stack.top;
+  while (currentNode !== null) {
+    console.log(currentNode.data);
+    currentNode = currentNode.next;
+  }
+  return;
+}
+
+// starTrek.pop()
+// starTrek.pop()
+
+console.log(display(starTrek));
+
+
