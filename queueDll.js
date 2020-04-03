@@ -83,4 +83,4 @@ function display(q) {
 
 //display(starTrekQ);
 
-peek(starTrekQ);
+// peek(starTrekQ);
