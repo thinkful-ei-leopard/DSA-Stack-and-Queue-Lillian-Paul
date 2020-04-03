@@ -22,6 +22,9 @@ class Stack {
   }
 
   pop() {
+    if (this.top === null) {
+      return;
+    }
     const node = this.top;
     this.top = node.next;
     return node.data;
@@ -79,27 +82,64 @@ function display(stack) {
 function is_palindrome(str) {
   str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
 
-  const palStack = new Stack;
-  
-  for(let i = 0; i < str.length; i++){
+  const palStack = new Stack();
+
+  for (let i = 0; i < str.length; i++) {
     palStack.push(str[i]);
   }
 
   let revStr = '';
-  while(palStack.top !== null){
+  while (palStack.top !== null) {
     revStr += palStack.top.data;
     palStack.pop();
   }
- 
-  if(revStr === str){
+
+  if (revStr === str) {
     return `${str} is a palindrome!`;
   } else {
     return `${str} is NOT a palindrome`;
   }
-
 }
 
 // console.log(is_palindrome('dad'));
 // console.log(is_palindrome('A man, a plan, a canal: Panama'));
 // console.log(is_palindrome('1001'));
 // console.log(is_palindrome('Tauhida'));
+
+// 4. matching parentheses
+
+function matchingParens(exp) {
+  const matchStack = new Stack();
+
+  if (exp.length <= 1) {
+    return false;
+  }
+
+  for (let i = 0; i < exp.length; i++) {
+    counter++;
+
+    if (exp[i] === '(') {
+      matchStack.push('(');
+    }
+    if (exp[i] === ')') {
+      matchStack.push(')');
+    }
+  }
+
+  let openCounter = 0;
+  let closeCounter = 0;
+
+  while (matchStack !== null) {
+    matchStack.pop();
+  }
+
+  if (matchStack.top === null) {
+    return 'parens match';
+  } else if (matchStack.top.data === ')') {
+    return 'too many closing parens';
+  } else {
+    return 'missing a closing paren';
+  }
+}
+
+console.log(matchingParens('testing a match ( ))'));
