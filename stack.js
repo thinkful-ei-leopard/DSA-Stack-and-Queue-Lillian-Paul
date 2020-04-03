@@ -72,6 +72,34 @@ function display(stack) {
 // starTrek.pop()
 // starTrek.pop()
 
-console.log(display(starTrek));
+//console.log(display(starTrek));
 
+// 3. check for palindromes
 
+function is_palindrome(str) {
+  str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+
+  const palStack = new Stack;
+  
+  for(let i = 0; i < str.length; i++){
+    palStack.push(str[i]);
+  }
+
+  let revStr = '';
+  while(palStack.top !== null){
+    revStr += palStack.top.data;
+    palStack.pop();
+  }
+ 
+  if(revStr === str){
+    return `${str} is a palindrome!`;
+  } else {
+    return `${str} is NOT a palindrome`;
+  }
+
+}
+
+// console.log(is_palindrome('dad'));
+// console.log(is_palindrome('A man, a plan, a canal: Panama'));
+// console.log(is_palindrome('1001'));
+// console.log(is_palindrome('Tauhida'));
